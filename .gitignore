@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+*.pdf
+
+
 # Compiled Object files
 *.slo
 *.lo
@@ -39,3 +42,5 @@
 
 # debug information files
 *.dwo
+#Clions Folder
+.idea/

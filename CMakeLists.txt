@@ -50,10 +50,20 @@ FetchContent_MakeAvailable(glfw glad glm)
 find_package(OpenGL REQUIRED)
 
 # -------------------------------
+#  Source files (auto-detect)
+# -------------------------------
+file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS
+        src/*.cpp
+        src/*.h
+        src/*.c
+        src/*.hpp
+)
+
+# -------------------------------
 #  Executable target
 # -------------------------------
 add_executable(${PROJECT_NAME}
-        src/main.cpp
+        ${SRC_FILES}
         src/vertex_shader.glsl
         src/fragment_shader.glsl
 )
@@ -63,6 +73,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/vertex_shader.glsl
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/fragment_shader.glsl
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 # -------------------------------
 #  Include directories
 # -------------------------------
@@ -70,6 +81,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
         ${glad_SOURCE_DIR}/include
         ${glfw_SOURCE_DIR}/include
         ${glm_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # -------------------------------
