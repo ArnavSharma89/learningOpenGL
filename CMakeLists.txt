@@ -64,15 +64,16 @@ file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS
 # -------------------------------
 add_executable(${PROJECT_NAME}
         ${SRC_FILES}
-        src/vertex_shader.glsl
-        src/fragment_shader.glsl
+        src/vertex_shader.vs
+        src/fragment_shader.fs
+        src/Shader.h
 )
 
-# Copy shaders into build directory after building
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/vertex_shader.glsl
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/fragment_shader.glsl
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+## Copy shaders into build directory after building
+#file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/vertex_shader.vs
+#        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+#file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/fragment_shader.fs
+#        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 # -------------------------------
 #  Include directories
